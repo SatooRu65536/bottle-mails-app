@@ -1,16 +1,25 @@
-# online_bottle_male
+# オンラインボトルメール
+全く新しいSNS的ななにか
 
-A new Flutter project.
 
-## Getting Started
+## Features
+海に流して知らない人にメッセージが届くボトルメール、のオンライン版です。
+流した瓶はマップ上を彷徨ってどこか知らない地へ届きます。
 
-This project is a starting point for a Flutter application.
+どこの誰に届くか分からないSNS。だれかに言うまでもない呟きを流していきましょう。
 
-A few resources to get you started if this is your first Flutter project:
 
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
+## Requirement
+- flutter 3.3.10
+- Firebase Authentication
+- Firestore
+- Google Maps API
 
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+
+## Docments
+- [仕様書](./docment/specification.md)
+- [メモ](./docment/memo.md)
+
+
+## License
+No license
