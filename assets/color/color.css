@@ -1,15 +1,18 @@
 * {
-    --color-primary: #80deea;
-    --color-primary-light: #b4ffff;
-    --color-primary-dark: #4bacb8;
-    --color-primary-on-text: #000000;
+    --color-primary: #64b5f6;
+    --color-primary-light: #9be7ff;
+    --color-primary-dark: #2286c3;
+    --color-primary-text: #fafafa;
 
     --color-secondary: #ff9398;
     --color-secondary-light: #ffc5c9;
     --color-secondary-dark: #c9636a;
-    --color-secondary-on-text: #424242;
+    --color-secondary-text: #424242;
+
+    --color-neutral: #aaaaaa;
 
     --color-bg: #f5f5f5;
+    --color-bg-light: #ffffff;
     --color-bg-dark: #e1e1e1;
 
     font-size: 18px;
@@ -21,6 +24,28 @@
 body {
     padding: 50px;
     background-color: var(--color-bg);
+}
+
+.bg-dark {
+    width: 33.3%;
+    height: 1100px;
+    padding: 50px;
+    background-color: var(--color-bg-dark);
+    position: absolute;
+    top: 0;
+    right: 0;
+    z-index: -1;
+}
+
+.bg-light {
+    width: 33.3%;
+    height: 1100px;
+    padding: 50px;
+    background-color: var(--color-bg-light);
+    position: absolute;
+    top: 0;
+    left: 33.3%;
+    z-index: -1;
 }
 
 div {
@@ -38,42 +63,36 @@ div {
     margin-top: 50px;
 }
 
-.bg-dark {
-    width: 50%;
-    height: calc(100vh + 200px);
-    background-color: var(--color-bg-dark);
-    position: absolute;
-    top: 0;
-    right: 0;
-    z-index: -1;
-}
-
 .primary-light {
-    color: var(--color-primary-on-text);
+    color: var(--color-primary-text);
     background-color: var(--color-primary-light);
 }
 
 .primary {
-    color: var(--color-primary-on-text);
+    color: var(--color-primary-text);
     background-color: var(--color-primary);
 }
 
 .primary-dark {
-    color: var(--color-primary-on-text);
+    color: var(--color-primary-text);
     background-color: var(--color-primary-dark);
 }
 
 .secoundary-light {
-    color: var(--color-secondary-on-text);
+    color: var(--color-secondary-text);
     background-color: var(--color-secondary-light);
 }
 
 .secoundary {
-    color: var(--color-secondary-on-text);
+    color: var(--color-secondary-text);
     background-color: var(--color-secondary);
 }
 
 .secoundary-dark {
-    color: var(--color-secondary-on-text);
+    color: var(--color-secondary-text);
     background-color: var(--color-secondary-dark);
+}
+
+.neutral {
+    background-color: var(--color-neutral);
 }
