@@ -1,7 +1,7 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.example.online_bottle_male">
+    package="me.satooru65536.bottlemailsapp.bottle_mails">
    <application
-        android:label="online_bottle_male"
+        android:label="bottle_mails"
         android:name="${applicationName}"
         android:icon="@mipmap/ic_launcher">
         <activity

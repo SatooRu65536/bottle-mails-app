@@ -7,9 +7,9 @@
 
 
 ## 画面イメージ
-![画面イメージ-1](images/app_image/app-image-1.png)
-![画面イメージ-2](images/app_image/app-image-2.png)
-![画面イメージ-3](images/app_image/app-image-3.png)
+![画面イメージ-1](images/app-images/app-image-1.png)
+![画面イメージ-2](images/app-images/app-image-2.png)
+![画面イメージ-3](images/app-images/app-image-3.png)
 
 1. **ロード画面**  
 2. **ログイン画面**  
