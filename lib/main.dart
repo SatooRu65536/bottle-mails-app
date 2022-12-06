@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
 
 void main() {
   runApp(const MyApp());
@@ -9,8 +10,16 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const MaterialApp(
-        debugShowCheckedModeBanner: false, home: HomeView());
+    return MaterialApp(
+        debugShowCheckedModeBanner: false,
+        theme: ThemeData(
+          primaryColor: const Color(0xff64b5f6),
+          primaryColorLight: const Color(0xff9be7ff),
+          primaryColorDark: const Color(0xff2286c3),
+          bottomAppBarColor: const Color(0xfff5f5f5),
+          textTheme: GoogleFonts.murechoTextTheme(Theme.of(context).textTheme),
+        ),
+        home: const HomeView());
   }
 }
 
@@ -23,10 +32,10 @@ class HomeView extends StatelessWidget {
       floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
       floatingActionButton: FloatingActionButton(
         onPressed: () {},
-        child: const Icon(Icons.map),
+        backgroundColor: Theme.of(context).primaryColor,
+        child: const Icon(Icons.map, color: Color(0xfff5f5f5)),
       ),
       bottomNavigationBar: BottomAppBar(
-        color: Theme.of(context).primaryColor,
         notchMargin: 6.0,
         shape: const AutomaticNotchedShape(
           RoundedRectangleBorder(),
@@ -44,7 +53,7 @@ class HomeView extends StatelessWidget {
               IconButton(
                 icon: const Icon(
                   Icons.home_filled,
-                  color: Colors.white,
+                  color: Color(0xffaaaaaa),
                 ),
                 onPressed: () {},
               ),
@@ -52,7 +61,7 @@ class HomeView extends StatelessWidget {
               IconButton(
                 icon: const Icon(
                   Icons.add_box,
-                  color: Colors.white,
+                  color: Color(0xffaaaaaa),
                 ),
                 onPressed: () {},
               ),
@@ -60,7 +69,7 @@ class HomeView extends StatelessWidget {
               IconButton(
                 icon: const Icon(
                   Icons.mail,
-                  color: Colors.white,
+                  color: Color(0xffaaaaaa),
                 ),
                 onPressed: () {},
               ),
@@ -68,7 +77,7 @@ class HomeView extends StatelessWidget {
               IconButton(
                 icon: const Icon(
                   Icons.settings,
-                  color: Colors.white,
+                  color: Color(0xffaaaaaa),
                 ),
                 onPressed: () {},
               ),
