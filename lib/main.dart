@@ -1,5 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import './view/map.dart';
+import './view/home.dart';
+import 'view/history.dart';
+import './view/setting.dart';
 
 void main() {
   runApp(const MyApp());
@@ -19,72 +23,57 @@ class MyApp extends StatelessWidget {
           bottomAppBarColor: const Color(0xfff5f5f5),
           textTheme: GoogleFonts.murechoTextTheme(Theme.of(context).textTheme),
         ),
-        home: const HomeView());
+        home: const TopView());
   }
 }
 
-class HomeView extends StatelessWidget {
-  const HomeView({super.key});
+class TopView extends StatefulWidget {
+  const TopView({super.key});
+
+  @override
+  State<StatefulWidget> createState() => _TopViewState();
+}
+
+class _TopViewState extends State<TopView> {
+  int _currentIndex = 0;
+  final _pageWidgets = [
+    const MapView(),
+    const HomeView(),
+    const HistoryView(),
+    const SettingView(),
+  ];
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
-      floatingActionButton: FloatingActionButton(
-        onPressed: () {},
-        backgroundColor: Theme.of(context).primaryColor,
-        child: const Icon(Icons.map, color: Color(0xfff5f5f5)),
-      ),
-      bottomNavigationBar: BottomAppBar(
-        notchMargin: 6.0,
-        shape: const AutomaticNotchedShape(
-          RoundedRectangleBorder(),
-          StadiumBorder(
-            side: BorderSide(),
+      body: SafeArea(child: _pageWidgets[_currentIndex]),
+      bottomNavigationBar: NavigationBar(
+        selectedIndex: _currentIndex,
+        onDestinationSelected: (index) => setState(() {
+          _currentIndex = index;
+        }),
+        destinations: const [
+          NavigationDestination(
+            // selectedIcon: Icon(Icons.mail),
+            icon: Icon(Icons.map),
+            label: 'Map',
           ),
-        ),
-        child: Padding(
-          padding: const EdgeInsets.symmetric(horizontal: 8.0),
-          child: Row(
-            mainAxisSize: MainAxisSize.max,
-            mainAxisAlignment: MainAxisAlignment.spaceAround,
-            children: <Widget>[
-              const Spacer(flex: 2),
-              IconButton(
-                icon: const Icon(
-                  Icons.home_filled,
-                  color: Color(0xffaaaaaa),
-                ),
-                onPressed: () {},
-              ),
-              const Spacer(flex: 2),
-              IconButton(
-                icon: const Icon(
-                  Icons.add_box,
-                  color: Color(0xffaaaaaa),
-                ),
-                onPressed: () {},
-              ),
-              const SizedBox(width: 100),
-              IconButton(
-                icon: const Icon(
-                  Icons.mail,
-                  color: Color(0xffaaaaaa),
-                ),
-                onPressed: () {},
-              ),
-              const Spacer(flex: 2),
-              IconButton(
-                icon: const Icon(
-                  Icons.settings,
-                  color: Color(0xffaaaaaa),
-                ),
-                onPressed: () {},
-              ),
-              const Spacer(flex: 2),
-            ],
+          NavigationDestination(
+            // selectedIcon: Icon(Icons.mail),
+            icon: Icon(Icons.home_filled),
+            label: 'Home',
           ),
-        ),
+          NavigationDestination(
+            // selectedIcon: Icon(Icons.mail),
+            icon: Icon(Icons.mail),
+            label: 'history',
+          ),
+          NavigationDestination(
+            // selectedIcon: Icon(Icons.mail),
+            icon: Icon(Icons.settings),
+            label: 'Setting',
+          ),
+        ],
       ),
     );
   }
