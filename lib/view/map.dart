@@ -5,7 +5,9 @@ class MapView extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const Scaffold(
-        body: Center(child: Text('Map', style: TextStyle(fontSize: 32.0))));
+    return Scaffold(
+      body: const Center(child: Text('Map', style: TextStyle(fontSize: 32.0))),
+      backgroundColor: Theme.of(context).scaffoldBackgroundColor,
+    );
   }
 }

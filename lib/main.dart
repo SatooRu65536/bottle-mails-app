@@ -1,4 +1,6 @@
+import 'package:bottle_mails/view/post.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:google_fonts/google_fonts.dart';
 import './view/map.dart';
 import './view/home.dart';
@@ -6,6 +8,14 @@ import 'view/history.dart';
 import './view/setting.dart';
 
 void main() {
+  WidgetsFlutterBinding.ensureInitialized();
+  SystemChrome.setPreferredOrientations([
+    DeviceOrientation.portraitUp,
+    DeviceOrientation.portraitDown,
+  ]).then((_) {
+    runApp(const MyApp());
+  });
+
   runApp(const MyApp());
 }
 
@@ -17,12 +27,15 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
         debugShowCheckedModeBanner: false,
         theme: ThemeData(
-          primaryColor: const Color(0xff64b5f6),
-          primaryColorLight: const Color(0xff9be7ff),
-          primaryColorDark: const Color(0xff2286c3),
-          bottomAppBarColor: const Color(0xfff5f5f5),
-          textTheme: GoogleFonts.murechoTextTheme(Theme.of(context).textTheme),
-        ),
+            primaryColor: Theme.of(context).primaryColor,
+            scaffoldBackgroundColor: Theme.of(context).scaffoldBackgroundColor,
+            textTheme:
+                GoogleFonts.murechoTextTheme(Theme.of(context).textTheme),
+            appBarTheme:
+                AppBarTheme(backgroundColor: Theme.of(context).primaryColor),
+            colorScheme: ColorScheme.fromSwatch().copyWith(
+                secondary: const Color(0xffff9398),
+                surface: const Color(0xffaaaaaa))),
         home: const TopView());
   }
 }
@@ -39,6 +52,7 @@ class _TopViewState extends State<TopView> {
   final _pageWidgets = [
     const MapView(),
     const HomeView(),
+    const PostView(),
     const HistoryView(),
     const SettingView(),
   ];
@@ -46,34 +60,74 @@ class _TopViewState extends State<TopView> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: SafeArea(child: _pageWidgets[_currentIndex]),
-      bottomNavigationBar: NavigationBar(
-        selectedIndex: _currentIndex,
-        onDestinationSelected: (index) => setState(() {
-          _currentIndex = index;
+      body: _pageWidgets[_currentIndex],
+      floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
+      floatingActionButton: FloatingActionButton(
+        onPressed: () => setState(() {
+          _currentIndex = 0;
         }),
-        destinations: const [
-          NavigationDestination(
-            // selectedIcon: Icon(Icons.mail),
-            icon: Icon(Icons.map),
-            label: 'Map',
+        backgroundColor: Theme.of(context).primaryColor,
+        child:
+            Icon(Icons.map, color: Theme.of(context).scaffoldBackgroundColor),
+      ),
+      bottomNavigationBar: BottomAppBar(
+        notchMargin: 6.0,
+        shape: const AutomaticNotchedShape(
+          RoundedRectangleBorder(),
+          StadiumBorder(
+            side: BorderSide(),
           ),
-          NavigationDestination(
-            // selectedIcon: Icon(Icons.mail),
-            icon: Icon(Icons.home_filled),
-            label: 'Home',
+        ),
+        child: Padding(
+          padding: const EdgeInsets.symmetric(horizontal: 8.0),
+          child: Row(
+            mainAxisSize: MainAxisSize.max,
+            mainAxisAlignment: MainAxisAlignment.spaceAround,
+            children: <Widget>[
+              const Spacer(flex: 2),
+              IconButton(
+                icon: Icon(
+                  Icons.home_filled,
+                  color: Theme.of(context).colorScheme.surface,
+                ),
+                onPressed: () => setState(() {
+                  _currentIndex = 1;
+                }),
+              ),
+              const Spacer(flex: 2),
+              IconButton(
+                icon: Icon(
+                  Icons.add_box,
+                  color: Theme.of(context).colorScheme.surface,
+                ),
+                onPressed: () => setState(() {
+                  _currentIndex = 2;
+                }),
+              ),
+              const SizedBox(width: 100),
+              IconButton(
+                icon: Icon(
+                  Icons.mail,
+                  color: Theme.of(context).colorScheme.surface,
+                ),
+                onPressed: () => setState(() {
+                  _currentIndex = 3;
+                }),
+              ),
+              const Spacer(flex: 2),
+              IconButton(
+                icon: Icon(
+                  Icons.settings,
+                  color: Theme.of(context).colorScheme.surface,
+                ),
+                onPressed: () => setState(() {
+                  _currentIndex = 4;
+                }),
+              ),
+              const Spacer(flex: 2),
+            ],
           ),
-          NavigationDestination(
-            // selectedIcon: Icon(Icons.mail),
-            icon: Icon(Icons.mail),
-            label: 'history',
-          ),
-          NavigationDestination(
-            // selectedIcon: Icon(Icons.mail),
-            icon: Icon(Icons.settings),
-            label: 'Setting',
-          ),
-        ],
+        ),
       ),
     );
   }
