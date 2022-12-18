@@ -4,7 +4,7 @@ import 'package:flutter/services.dart';
 import 'package:google_fonts/google_fonts.dart';
 import './view/map.dart';
 import './view/home.dart';
-import 'view/history.dart';
+import './view/history.dart';
 import './view/setting.dart';
 
 void main() {
