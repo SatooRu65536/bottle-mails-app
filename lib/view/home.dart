@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_svg/svg.dart';
 import 'package:wave/config.dart';
 import 'package:wave/wave.dart';
 
@@ -7,14 +8,18 @@ class HomeView extends StatelessWidget {
   static const userName = '佐藤 さとる';
   static const iconLink = 'assets/images/icons/sample.png';
   static const selfIntroduction =
-      'おはよう。\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nあ';
+      'あいうえお\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nあ';
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       body: Column(children: [
         Stack(
-          children: [_buildWaveContainer(context), _buildProfile(context)],
+          children: [
+            _buildWaveContainer(context),
+            _buildProfile(context),
+            _buildBottle(context)
+          ],
         )
       ]),
       backgroundColor: Theme.of(context).scaffoldBackgroundColor,
@@ -26,10 +31,10 @@ class HomeView extends StatelessWidget {
       config: CustomConfig(
         colors: [Theme.of(context).scaffoldBackgroundColor],
         durations: [1],
-        heightPercentages: [0.83],
+        heightPercentages: [0.78],
       ),
       backgroundColor: Theme.of(context).primaryColor,
-      size: const Size(double.infinity, 400),
+      size: const Size(double.infinity, 380),
       waveAmplitude: 20,
     );
   }
@@ -70,9 +75,12 @@ class HomeView extends StatelessWidget {
               ),
             ),
             Container(
-              color: const Color(0xffffffff),
               height: 100,
               width: 250,
+              decoration: BoxDecoration(
+                color: Theme.of(context).scaffoldBackgroundColor,
+                borderRadius: BorderRadius.circular(10),
+              ),
               margin: EdgeInsets.only(
                   top: 20, left: MediaQuery.of(context).size.width * 0.1),
               child: const SingleChildScrollView(
@@ -80,6 +88,17 @@ class HomeView extends StatelessWidget {
               ),
             ),
           ],
+        ));
+  }
+
+  Widget _buildBottle(context) {
+    return Positioned(
+        bottom: 0,
+        right: MediaQuery.of(context).size.width * 0.2,
+        child: SvgPicture.asset(
+          'assets/images/bottle.svg',
+          color: Theme.of(context).scaffoldBackgroundColor,
+          height: 100,
         ));
   }
 }
