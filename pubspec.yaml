@@ -33,8 +33,9 @@ flutter_native_splash:
 flutter:
   uses-material-design: true
   assets:
-    - assets/images/icons/sample.png
     - assets/images/
+    - assets/images/icons/sample.png
+    - assets/images/icons/bottle.svg
 
 dev_dependencies:
   flutter_test:

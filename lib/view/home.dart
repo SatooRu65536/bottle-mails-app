@@ -20,7 +20,8 @@ class HomeView extends StatelessWidget {
             _buildProfile(context),
             _buildBottle(context)
           ],
-        )
+        ),
+        _buildMenuContainer(context)
       ]),
       backgroundColor: Theme.of(context).scaffoldBackgroundColor,
     );
@@ -96,10 +97,85 @@ class HomeView extends StatelessWidget {
         bottom: 0,
         right: MediaQuery.of(context).size.width * 0.2,
         child: SvgPicture.asset(
-          'assets/images/bottle.svg',
+          'assets/images/icons/bottle.svg',
           color: Theme.of(context).scaffoldBackgroundColor,
           height: 100,
         ));
+  }
+
+  Widget _buildMenuContainer(context) {
+    return Row(
+      children: [
+        Column(
+          children: [
+            Container(
+                width: 160,
+                height: 80,
+                margin: const EdgeInsets.all(20),
+                padding: const EdgeInsets.all(20),
+                decoration: BoxDecoration(
+                  color: Theme.of(context).primaryColor,
+                  borderRadius: BorderRadius.circular(10),
+                ),
+                child: GestureDetector(
+                    onTap: () {
+                      Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                            builder: (context) => const ProfileView(),
+                          ));
+                    },
+                    child: Row(
+                      children: [
+                        Icon(
+                          Icons.interpreter_mode_sharp,
+                          color: Theme.of(context).scaffoldBackgroundColor,
+                        ),
+                        Text(
+                          'アイテム',
+                          style: TextStyle(
+                              fontSize: 18,
+                              color: Theme.of(context).scaffoldBackgroundColor,
+                              fontWeight: FontWeight.bold),
+                        )
+                      ],
+                    ))),
+            Container(
+                width: 160,
+                height: 80,
+                margin: const EdgeInsets.all(20),
+                padding: const EdgeInsets.all(20),
+                decoration: BoxDecoration(
+                  color: Theme.of(context).primaryColor,
+                  borderRadius: BorderRadius.circular(10),
+                ),
+                child: GestureDetector(
+                    onTap: () {
+                      Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                            builder: (context) => const ProfileView(),
+                          ));
+                    },
+                    child: Row(
+                      children: [
+                        Icon(
+                          Icons.interpreter_mode_sharp,
+                          color: Theme.of(context).scaffoldBackgroundColor,
+                        ),
+                        Text(
+                          'アイテム',
+                          style: TextStyle(
+                              fontSize: 18,
+                              color: Theme.of(context).scaffoldBackgroundColor,
+                              fontWeight: FontWeight.bold),
+                        )
+                      ],
+                    ))),
+          ],
+        )
+      ],
+    );
   }
 }
 
